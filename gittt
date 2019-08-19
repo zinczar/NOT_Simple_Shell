@@ -1,0 +1,5 @@
+#!/bin/bash
+read -r -p 'Commit message: ' msg	# prompt user for commit message
+git add -A .   	   	              # Adds all file
+git commit -m "$msg"  		      # commit with message
+git push origin master                # push

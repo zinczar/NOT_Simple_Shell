@@ -5,15 +5,21 @@
  *
  * Return: Always 0.
  */
+extern char **environ;
 int main(int ac, char **av, char **env)
 {
-	unsigned int i;
+	unsigned int i = 0, j;
 
-	i = 0;
 	while (env[i] != NULL)
 	{
-		printf("%s\n", env[i]);
+		printf("env while loop:%s\n", env[i]);
+		printf("env Address: %p\n", &env);
 		i++;
+	}
+	for (j = 0; environ[j]; j++)
+	{
+		printf("Environ For Loop: %s\n", environ[j]);
+                printf("Environ Address: %p\n", &environ);
 	}
 	return (0);
 }

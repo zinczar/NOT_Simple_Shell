@@ -93,3 +93,29 @@ int _strcmp(char *s1, char *s2)
 		return (*s1 - *s2);
 	}
 }
+
+int _strncmp(char *str1, char *str2, int n)
+{
+	int count = 0, i;
+
+	for (i = 0; i < n; i++)
+	{
+		if (str1[i] != str2[i])
+			count = count + 1;
+	}
+	return (count);
+}
+
+extern char **environ;
+
+char *_getenv(char *name)
+{
+	size_t i;
+
+	for (i = 0; environ[i]; i++)
+	{
+		if (_strncmp(environ[i], name, _strlen(name)) == 0)
+			return (&environ[i][_strlen(name)]);
+	}
+	return (NULL);
+}

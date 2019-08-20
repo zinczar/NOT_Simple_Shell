@@ -7,6 +7,7 @@ int main(void)
 	size_t characters;
 	pid_t child_pid;
 	int status;
+	char *test_path = _getenv("PATH");
 
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	if( buffer == NULL)
@@ -33,6 +34,7 @@ int main(void)
 			printf("### Child ###\nCurrent PID: %d and Child PID: %d\n", getpid(), child_pid);
 			printf("%lu characters were read.\n",characters);
 			printf("You typed: '%s'\n",buffer);
+			printf("PATH: %s\n", test_path);
 		}
 		else if (child_pid > 0)
 		{

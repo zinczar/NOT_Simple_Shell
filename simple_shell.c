@@ -2,12 +2,15 @@
 
 int main(void)
 {
+	int i = 0, j = 0;
 	char *buffer;
+	char *command_token;
+	char *command_array[100];
 	size_t bufsize = 32;
 	size_t characters;
 	pid_t child_pid;
 	int status;
-	char *test_path = _getenv("PATH");
+	char *exe_token;
 
 	buffer = (char *)malloc(bufsize * sizeof(char));
 	if( buffer == NULL)
@@ -21,6 +24,18 @@ int main(void)
 		write(STDIN_FILENO,"ᕙ(⇀‸↼‶)ᕗ $ ", 23);
 		characters = getline(&buffer,&bufsize,stdin);
 
+		command_token = strtok(buffer, " ");
+
+		while (command_token != NULL)
+		{
+			command_array[i++] = command_token;
+			command_token = strtok(NULL, " ");
+		}
+		command_array[i] = NULL;
+
+		while (command_array[j])
+			printf("%s\n", command_array[j++]);
+
 		child_pid = fork();
 
 		if (child_pid == -1)
@@ -33,8 +48,8 @@ int main(void)
 		{
 			printf("### Child ###\nCurrent PID: %d and Child PID: %d\n", getpid(), child_pid);
 			printf("%lu characters were read.\n",characters);
-			printf("You typed: '%s'\n",buffer);
-			printf("PATH: %s\n", test_path);
+			exe_token = pathfinder(command_array[0]);
+			printf("PATH: %s\n", exe_token);
 		}
 		else if (child_pid > 0)
 		{

@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _strlen - code
- * @s: Char
+ * _strlen - Determines the number of characters in a string
+ * @s: The string to be counted
  *
  * Return: Count
  */
@@ -18,9 +18,9 @@ int _strlen(const char *s)
 }
 
 /**
- * _strcpy - Code
- * @dest: Char
- * @src: Char
+ * _strcpy - A function that copies a string into pre-allocated memory
+ * @dest: Copy of the string
+ * @src: String to copy
  *
  * Return: Dest
  */
@@ -67,43 +67,12 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _strcmp - compares two strings
- *
- * @s1: string 1
- *
- * @s2: string 2
- *
- * Return: compared strings
- *
- */
-
-int _strcmp(char *s1, char *s2)
-{
-	while ((*s1 != '\0' && *s2 != '\0') && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	if (*s1 == *s2)
-	{
-		return (0);
-	}
-	else
-	{
-		return (*s1 - *s2);
-	}
-}
-
-/**
  * _strncmp - compares strings upto n length
- *
  * @str1: first string to be compared
- *
  * @str2: second string to be compared
+ * @n: Maximum number of bytes to comapre
  *
- * @n: length of strings to comapre
- *
- * Return: number of different characters
+ * Return: number of differences between the strings
  */
 
 int _strncmp(char *str1, char *str2, int n)
@@ -119,21 +88,29 @@ int _strncmp(char *str1, char *str2, int n)
 }
 
 /**
- * *_getenv - gets environment
+ * _strdup - gets environment
+ * @string: Incoming string to duplicate
  *
- * @name: section of env to return
- *
- * Return: env matching paramater
+ * Return: a ptr to a null-terminated string, which is a duplicate of string
  */
 
-char *_getenv(char *name)
+char *_strdup(char *string)
 {
-	size_t i;
+	char *duplicate;
+	size_t i = 0, length = 0;
 
-	for (i = 0; environ[i]; i++)
-	{
-		if (_strncmp(environ[i], name, _strlen(name)) == 0)
-			return (&environ[i][_strlen(name)]);
-	}
-	return (NULL);
+	if (string == NULL)
+		return (NULL);
+
+	length = _strlen(string);
+
+	duplicate = malloc(sizeof(char) * (length + 1));
+
+	if (duplicate == NULL)
+		return (NULL);
+
+	while ((duplicate[i] = string[i]) != '\0')
+	       i++;
+
+	return (duplicate);
 }

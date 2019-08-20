@@ -19,9 +19,11 @@ pathfinder.c  README.md  shell  shell.h  shell_helpers.c  simple_shell.c
 ```
 <br/>
 # How to Complie:
+<br/>
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
+<br/>
 # Contributers
 Brendan Eliason - follow on twitter @zinczar<br/>
 Andrew Cox - follow on twitter @AndrewC795

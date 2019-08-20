@@ -22,8 +22,6 @@ pathfinder.c  README.md  shell  shell.h  shell_helpers.c  simple_shell.c
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
-<br/>
-
 # Contributers
 Brendan Eliason - follow on twitter @zinczar<br/>
 Andrew Cox - follow on twitter @AndrewC795

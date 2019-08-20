@@ -8,6 +8,8 @@ char *pathfinder(char *input)
 	char *token_array[100];
 	char *concat_token = NULL;
 
+	concat_token = malloc(sizeof(char) * 100);
+
 	printf("%s\n", input);
 
 	while (path_token != NULL)

@@ -106,8 +106,6 @@ int _strncmp(char *str1, char *str2, int n)
 	return (count);
 }
 
-extern char **environ;
-
 char *_getenv(char *name)
 {
 	size_t i;

@@ -5,7 +5,6 @@
  *
  * Return: Always 0.
  */
-extern char **environ;
 int main(int ac, char **av, char **env)
 {
 	unsigned int i = 0, j;

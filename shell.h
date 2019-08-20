@@ -7,6 +7,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern char **environ;
+
 int _putchar(char c);
 int main(void);
 char *pathfinder(char *input);

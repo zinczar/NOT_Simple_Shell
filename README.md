@@ -17,7 +17,7 @@ $ pwd
 $ ls
 pathfinder.c  README.md  shell  shell.h  shell_helpers.c  simple_shell.c
 ```
-<br/>
+
 # How to Complie:
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh

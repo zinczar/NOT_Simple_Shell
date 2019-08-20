@@ -94,6 +94,18 @@ int _strcmp(char *s1, char *s2)
 	}
 }
 
+/**
+ * _strncmp - compares strings upto n length
+ *
+ * @str1: first string to be compared
+ *
+ * @str2: second string to be compared
+ *
+ * @n: length of strings to comapre
+ *
+ * Return: number of different characters
+ */
+
 int _strncmp(char *str1, char *str2, int n)
 {
 	int count = 0, i;
@@ -105,6 +117,14 @@ int _strncmp(char *str1, char *str2, int n)
 	}
 	return (count);
 }
+
+/**
+ * *_getenv - gets environment
+ *
+ * @name: section of env to return
+ *
+ * Return: env matching paramater
+ */
 
 char *_getenv(char *name)
 {

@@ -10,8 +10,6 @@ char *pathfinder(char *input)
 
 	concat_token = malloc(sizeof(char) * 100);
 
-	printf("%s\n", input);
-
 	while (path_token != NULL)
 	{
 		token_array[i++] = path_token;
@@ -24,7 +22,6 @@ char *pathfinder(char *input)
 		_strcpy(concat_token, token_array[j]);
 		_strcat(concat_token, "/");
 		_strcat(concat_token, input);
-/*                _strcat(concat_token, "\0");*/
 		j++;
 		if (access(concat_token, F_OK) == 0)
 		return(concat_token);

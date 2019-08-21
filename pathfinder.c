@@ -24,8 +24,7 @@ char *pathfinder(char *input)
 		_strcpy(concat_token, token_array[j]);
 		_strcat(concat_token, "/");
 		_strcat(concat_token, input);
-                _strcat(concat_token, "\0");
-		printf("%s\n", concat_token);
+/*                _strcat(concat_token, "\0");*/
 		j++;
 		if (access(concat_token, F_OK) == 0)
 		return(concat_token);

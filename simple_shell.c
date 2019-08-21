@@ -3,16 +3,16 @@
 int main(void)
 {
 	int i = 0, j = 0;
-	char *buffer;
+	char *buffer = NULL;
 	char *command_token;
 	char *command_array[100];
 	size_t bufsize = 32;
 	size_t characters;
 	pid_t child_pid;
 	int status;
-	char *exe_token;
+	char *exe_token = NULL;
 
-	buffer = (char *)malloc(bufsize * sizeof(char));
+	buffer = malloc(bufsize * sizeof(char));
 	if( buffer == NULL)
 	{
 		perror("Unable to allocate buffer");
@@ -49,6 +49,9 @@ int main(void)
 			printf("### Child ###\nCurrent PID: %d and Child PID: %d\n", getpid(), child_pid);
 			printf("%lu characters were read.\n",characters);
 			exe_token = pathfinder(command_array[0]);
+			printf("exe_token:%s...\n", exe_token);
+			if (execve(exe_token, command_array, NULL) == -1)
+				perror("Could not execve");
 			printf("PATH: %s\n", exe_token);
 		}
 		else if (child_pid > 0)

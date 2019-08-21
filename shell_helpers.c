@@ -48,20 +48,16 @@ char *_strcpy(char *dest, char *src)
  */
 char *_strcat(char *dest, char *src)
 {
-	int strlen = 0;
-	int i;
+	int length = _strlen(dest);
+	int i = 0;
 
-	while (*dest)
+	while (src[i])
 	{
-		strlen++;
-		dest++;
+		dest[length] = src[i];
+		length++;
+		i++;
 	}
-
-	for (i = 0 ; src[i] != '\0' ; i++)
-	{
-		dest[(strlen - 1) + i] = src[i];
-	}
-	dest[i + 1] = '\0';
+	dest[length] = '\0';
 
 	return (dest);
 }

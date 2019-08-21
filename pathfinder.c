@@ -21,18 +21,14 @@ char *pathfinder(char *input)
 
 	while (token_array[j])
 	{
-		printf("%s\n", token_array[j]);
 		_strcpy(concat_token, token_array[j]);
-                printf("%s\n", concat_token);
 		_strcat(concat_token, "/");
-                printf("%s\n", concat_token);
 		_strcat(concat_token, input);
-                printf("%s\n", concat_token);
                 _strcat(concat_token, "\0");
 		printf("%s\n", concat_token);
 		j++;
-/*		if (access(concat_token, F_OK) == 0)
-		return(concat_token);*/
+		if (access(concat_token, F_OK) == 0)
+		return(concat_token);
 	}
 
 	return (input);

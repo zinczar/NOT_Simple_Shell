@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	int i = 0, j = 0;
+	int i = 0;
 	char *buffer = NULL;
 	char *command_token;
 	char *command_array[100];
@@ -28,9 +28,6 @@ int main(void)
 			command_token = strtok(NULL, " ");
 		}
 		command_array[i] = NULL;
-
-		while (command_array[j])
-		j = 0;
 
 		child_pid = fork();
 

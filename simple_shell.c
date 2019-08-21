@@ -12,17 +12,15 @@ int main(void)
 	int status;
 	char *exe_token = NULL;
 
-	buffer = malloc(bufsize * sizeof(char));
-	if( buffer == NULL)
-	{
-		perror("Unable to allocate buffer");
-		exit(1);
-	}
-
 	while (1)
 	{
+		i = 0;
 		write(STDIN_FILENO,"ᕙ(⇀‸↼‶)ᕗ $ ", 23);
 		characters = getline(&buffer,&bufsize,stdin);
+		printf("BUFFER:[%s]\n", buffer);
+		if (buffer[characters - 1] == '\n')
+			buffer[characters - 1] = '\0';
+		printf("BUFFER:[%s]\n", buffer);
 
 		command_token = strtok(buffer, " ");
 
@@ -34,7 +32,8 @@ int main(void)
 		command_array[i] = NULL;
 
 		while (command_array[j])
-			printf("%s\n", command_array[j++]);
+			printf("[%d]: %s\n", j, command_array[j]), j++;
+		j = 0;
 
 		child_pid = fork();
 
@@ -49,7 +48,7 @@ int main(void)
 			printf("### Child ###\nCurrent PID: %d and Child PID: %d\n", getpid(), child_pid);
 			printf("%lu characters were read.\n",characters);
 			exe_token = pathfinder(command_array[0]);
-			printf("exe_token:%s...\n", exe_token);
+			printf("exe_token:%s\n", exe_token);
 			if (execve(exe_token, command_array, NULL) == -1)
 				perror("Could not execve");
 			printf("PATH: %s\n", exe_token);

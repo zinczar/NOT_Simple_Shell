@@ -2,23 +2,29 @@
 
 int main(void)
 {
-	int i = 0;
+	int i, status;
 	char *buffer = NULL;
 	char *command_token;
 	char *command_array[100];
 	size_t bufsize = 32;
 	size_t characters;
 	pid_t child_pid;
-	int status;
 	char *exe_token = NULL;
 
 	while (1)
 	{
 		i = 0;
-		write(STDIN_FILENO,"ᕙ(⇀‸↼‶)ᕗ $ ", 23);
+		if (isatty(STDIN_FILENO) == 1)
+			write(STDIN_FILENO,"ᕙ(⇀‸↼‶)ᕗ $ ", 23);
 		characters = getline(&buffer,&bufsize,stdin);
 		if (buffer[characters - 1] == '\n')
 			buffer[characters - 1] = '\0';
+
+		if (_strcmp(buffer, "exit") == 0)
+			return (2);
+
+                if (_strcmp(buffer, "env") == 0)
+                        _printenv();
 
 		command_token = strtok(buffer, " ");
 

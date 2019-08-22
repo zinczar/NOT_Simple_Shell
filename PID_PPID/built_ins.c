@@ -26,11 +26,13 @@ char *_getenv(char *name)
  *
  * Return: Always 0.
  */
-int _printenv(void)
+int main(int ac, char **av, char **env)
 {
 	size_t i = 0;
 
-	while (environ[i])
-		printf("%s\n", environ[i++]);
-	return (0);
+	(void)ac;
+	(void)av;
+	while (env[i])
+		printf("%s\n", env[i++]);
+	return (0)
 }

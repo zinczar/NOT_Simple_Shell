@@ -19,5 +19,7 @@ char *_strcat(char *dest, char *src);
 char *_getenv(char *name);
 int _strncmp(char *str1, char *str2, int n);
 char *_strdup(char *string);
+int _strcmp(char *s1, char *s2);
+int _printenv(void);
 
 #endif

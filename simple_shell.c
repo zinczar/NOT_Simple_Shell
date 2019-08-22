@@ -39,6 +39,11 @@ int main(void)
 		}
 		command_array[i] = NULL;
 
+		if (_strcmp(command_array[0],"cd") == 0)
+		{
+			chdir(command_array[1]);
+			continue;
+		}
 		child_pid = fork();
 
 		if (child_pid == -1)

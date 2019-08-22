@@ -16,11 +16,9 @@ int main(void)
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDIN_FILENO,"ᕙ(⇀‸↼‶)ᕗ $ ", 23);
 		characters = getline(&buffer,&bufsize,stdin);
+
 		if (characters == -1)
-		{
-			write(1,"\n",1);
 			break;
-		}
 
 		if (buffer[characters - 1] == '\n')
 			buffer[characters - 1] = '\0';
@@ -33,9 +31,9 @@ int main(void)
 
 		command_token = strtok(buffer, " ");
 
+		i = 0;
 		while (command_token != NULL)
 		{
-			i = 0;
 			command_array[i++] = command_token;
 			command_token = strtok(NULL, " ");
 		}
@@ -56,10 +54,8 @@ int main(void)
 				perror(exe_token);
 		}
 		else if (child_pid > 0)
-		{
 			waitpid(child_pid, &status, WUNTRACED);
-		}
-		free (buffer);
 	}
+	free (buffer);
 	return(0);
 }

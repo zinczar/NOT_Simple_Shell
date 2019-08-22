@@ -27,5 +27,7 @@ char *pathfinder(char *input)
 		return(concat_token);
 	}
 
+        free (concat_token);
+
 	return (input);
 }

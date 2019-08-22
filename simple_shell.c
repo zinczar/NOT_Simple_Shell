@@ -7,16 +7,21 @@ int main(void)
 	char *command_token;
 	char *command_array[100];
 	size_t bufsize = 32;
-	size_t characters;
+	ssize_t characters;
 	pid_t child_pid;
 	char *exe_token = NULL;
 
 	while (1)
 	{
-		i = 0;
 		if (isatty(STDIN_FILENO) == 1)
 			write(STDIN_FILENO,"ᕙ(⇀‸↼‶)ᕗ $ ", 23);
 		characters = getline(&buffer,&bufsize,stdin);
+		if (characters == -1)
+		{
+			write(1,"\n",1);
+			break;
+		}
+
 		if (buffer[characters - 1] == '\n')
 			buffer[characters - 1] = '\0';
 
@@ -30,6 +35,7 @@ int main(void)
 
 		while (command_token != NULL)
 		{
+			i = 0;
 			command_array[i++] = command_token;
 			command_token = strtok(NULL, " ");
 		}
@@ -47,12 +53,13 @@ int main(void)
 		{
 			exe_token = pathfinder(command_array[0]);
 			if (execve(exe_token, command_array, NULL) == -1)
-				perror("Could not execve");
+				perror(exe_token);
 		}
 		else if (child_pid > 0)
 		{
 			waitpid(child_pid, &status, WUNTRACED);
 		}
+		free (buffer);
 	}
 	return(0);
 }

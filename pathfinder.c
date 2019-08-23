@@ -3,7 +3,7 @@
 char *pathfinder(char *input)
 {
 	size_t i = 0, j = 0;
-        char *test_path = _strdup(_getenv("PATH="));
+	char *test_path = _strdup(_getenv("PATH="));
 	char *path_token = strtok(test_path, ":");
 	char *token_array[100];
 	char *concat_token = NULL;
@@ -24,10 +24,10 @@ char *pathfinder(char *input)
 		_strcat(concat_token, input);
 		j++;
 		if (access(concat_token, F_OK) == 0)
-		return(concat_token);
+		return (concat_token);
 	}
 
-        free (concat_token);
+	free(concat_token);
 
 	return (input);
 }

@@ -106,7 +106,7 @@ char *_strdup(char *string)
 		return (NULL);
 
 	while ((duplicate[i] = string[i]) != '\0')
-	       i++;
+		i++;
 
 	return (duplicate);
 }

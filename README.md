@@ -23,7 +23,7 @@ pathfinder.c  README.md  hsh  shell.h  shell_helpers.c  simple_shell.c
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
-## Respository Contents
+# Respository Contents
 Simple Shell files:
 
 | **File** | **Description** |

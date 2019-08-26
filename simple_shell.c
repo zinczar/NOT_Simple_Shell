@@ -27,7 +27,10 @@ int main(void)
 		if (buffer[characters - 1] == '\n')
 			buffer[characters - 1] = '\0';
 		if (_strcmp(buffer, "exit") == 0)
+		{
+			free(buffer);
 			return (2);
+		}
 		if (_strcmp(buffer, "env") == 0)
 			_printenv();
 		command_token = strtok(buffer, " ");

@@ -1,0 +1,16 @@
+.\" Manpage for Simple Shell.
+.TH man 3 "26 August 2019" "1.0" "Simple Shell man page"
+.SH NAME
+Simple Shell \- Basic shell based off bash
+.SH SYNOPSIS
+.IP
+hsh [options][file]
+.SH DESCRIPTION
+.IP
+Simple Shell is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.
+.SH Bugs
+.IP
+No known Bugs
+.SH Authors
+.IP
+Andrew Cox and Brendan Eliason

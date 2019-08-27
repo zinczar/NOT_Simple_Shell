@@ -29,10 +29,5 @@ int special_chars(char *argv, char *argv1, int status)
 		return (0);
 	}
 
-/*	if (_strcmp(argv, "echo $?") == 0)
-	{
-		perror(buffer);
-		return (-1);
-		}*/
 	return (-1);
 }

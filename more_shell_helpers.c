@@ -20,6 +20,7 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * print_cwd - Prints CWD
+ * @cwd: CWD Path
  *
  * Return: 0
  */
@@ -28,8 +29,10 @@ void print_cwd(char *cwd)
 {
 	int i = 0;
 
-	while(cwd[i])
+	while (cwd[i])
 		_putchar(cwd[i++]);
+	_putchar('$');
+	_putchar(' ');
 }
 
 /**

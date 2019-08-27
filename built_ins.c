@@ -20,9 +20,6 @@ char *_getenv(char *name)
 }
 /**
  * _printenv - prints the environment
- * @ac: Not Used
- * @av: Not used
- * @env: Location of system environment
  *
  * Return: Always 0.
  */

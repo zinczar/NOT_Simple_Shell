@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * pathfinder - Tokenizes PATH and matches with command
+ * @input: CLI argument
+ *
+ * Return: Concatinated PATH on success or input on failure
+ */
+
 char *pathfinder(char *input)
 {
 	size_t i = 0, j = 0, k = 0;

@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <errno.h>
 
 extern char **environ;
 
@@ -21,5 +22,6 @@ int _strncmp(char *str1, char *str2, int n);
 char *_strdup(char *string);
 int _strcmp(char *s1, char *s2);
 int _printenv(void);
+int special_chars(char *argv, char *argv1, int status);
 
 #endif

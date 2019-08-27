@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <errno.h>
+#include <limits.h>
 
 extern char **environ;
 
@@ -23,5 +24,6 @@ char *_strdup(char *string);
 int _strcmp(char *s1, char *s2);
 int _printenv(void);
 int special_chars(char *argv, char *argv1, int status);
+void print_cwd(char *cwd);
 
 #endif

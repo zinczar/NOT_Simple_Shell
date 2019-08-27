@@ -2,9 +2,11 @@
 
 /**
  * special_chars - entry point
- * @buffer:
+ * @argv: The primary command
+ * @argv1: Flag or path
+ * @status: Exit status
  *
- * Return: 0
+ * Return: 0 on success, -1 on failure
  */
 
 int special_chars(char *argv, char *argv1, int status)

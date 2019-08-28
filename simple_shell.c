@@ -10,8 +10,7 @@ int main(void)
 {	int i, status = 0, count = 0;
 	char *buffer = NULL;
 	char *command_token = NULL, *command_array[100], *exe_token = NULL;
-	size_t bufsize = 0;
-	ssize_t characters;
+	size_t bufsize = 32;
 	pid_t child_pid;
 	char cwd[PATH_MAX];
 
@@ -21,12 +20,16 @@ int main(void)
 			write(STDIN_FILENO, "ᕙ(⇀‸↼‶)ᕗ  ", 21);
 		getcwd(cwd, sizeof(cwd));
 		print_cwd(cwd);
-		characters = getline(&buffer, &bufsize, stdin);
-		if (characters == -1 || characters == EOF)
-			write(STDIN_FILENO, "\n", 2);
+		if (getline(&buffer, &bufsize, stdin) == EOF)
+		{
+			if (isatty(STDIN_FILENO) == 1)
+				write(STDOUT_FILENO, "\n", 2);
 			break;
-		if (buffer[characters - 1] == '\n')
-			buffer[characters - 1] = '\0';
+		}
+                if (_strcmp(buffer, "\n") == 0)
+                        continue;
+		if (buffer[_strlen(buffer) - 1] == '\n')
+			buffer[_strlen(buffer) - 1] = '\0';
 		command_token = strtok(buffer, " ");
 		i = 0;
 		while (command_token != NULL)
@@ -36,10 +39,10 @@ int main(void)
 		}
 		command_array[i] = NULL;
 		count++;
-		if (special_chars(command_array[0], command_array[1], status) == 0)
+		if (special_chars(command_array[0], command_array[1]) == 0)
 			continue;
 		child_pid = fork();
-		if (childcare(child_pid, exe_token, command_array, count) > 0)
+		if (childcare(child_pid, exe_token, command_array) > 0)
 			waitpid(child_pid, &status, WUNTRACED);
 	}
 	free(buffer);

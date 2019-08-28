@@ -46,19 +46,3 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-/**
- * error_print - compares two strings
- * @argv0: Command argument
- * @count: Shell iterations 
- *
- * Return: Prints errors
- *
- */
-void error_print(char *argv0, int count)
-{
-	write(STDIN_FILENO, "./hsh:", 21);
-	write(STDIN_FILENO, count, _strlen(count));
-	write(STDIN_FILENO, ":", 2);
-	write(STDIN_FILENO, argv0, _strlen(argv0));
-	write(STDIN_FILENO, ": not found", 12);
-}

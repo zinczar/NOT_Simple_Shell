@@ -23,9 +23,9 @@ int _strncmp(char *str1, char *str2, int n);
 char *_strdup(char *string);
 int _strcmp(char *s1, char *s2);
 int _printenv(void);
-int special_chars(char *argv, char *argv1, int status);
+int special_chars(char *argv, char *argv1);
 void print_cwd(char *cwd);
-int childcare(pid_t child_pid, char *exe_token, char **command_array, int count);
-void error_print(char *argv0, int count);
+int childcare(pid_t child_pid, char *exe_token, char **command_array);
+void error_print(void);
 
 #endif

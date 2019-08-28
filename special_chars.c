@@ -9,13 +9,13 @@
  * Return: 0 on success, -1 on failure
  */
 
-int special_chars(char *argv, char *argv1, int status)
+int special_chars(char *argv, char *argv1)
 {
 
 	if (_strcmp(argv, "exit") == 0)
 	{
 		free(argv);
-		exit(status);
+		exit(EXIT_SUCCESS);
 	}
 	if (_strcmp(argv, "env") == 0)
 	{

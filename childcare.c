@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-int childcare(pid_t child_pid, char *exe_token, char **command_array)
+int childcare(pid_t child_pid, char *exe_token, char **command_array, int count)
 {
 	if (child_pid == -1)
 	{
@@ -20,7 +20,7 @@ int childcare(pid_t child_pid, char *exe_token, char **command_array)
 		exe_token = pathfinder(command_array[0]);
 		if (execve(exe_token, command_array, NULL) == -1)
 		{
-			perror(exe_token);
+			error_print(command_array[0], count);
 			exit(1);
 		}
 	}

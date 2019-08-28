@@ -25,6 +25,7 @@ int _strcmp(char *s1, char *s2);
 int _printenv(void);
 int special_chars(char *argv, char *argv1, int status);
 void print_cwd(char *cwd);
-int childcare(pid_t child_pid, char *exe_token, char **command_array);
+int childcare(pid_t child_pid, char *exe_token, char **command_array, int count);
+void error_print(char *argv0, int count);
 
 #endif

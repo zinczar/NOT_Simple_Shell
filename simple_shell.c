@@ -7,10 +7,10 @@
  */
 
 int main(void)
-{	int i, status = 0;
+{	int i, status = 0, count = 0;
 	char *buffer = NULL;
 	char *command_token = NULL, *command_array[100], *exe_token = NULL;
-	size_t bufsize = 32;
+	size_t bufsize = 0;
 	ssize_t characters;
 	pid_t child_pid;
 	char cwd[PATH_MAX];
@@ -22,7 +22,8 @@ int main(void)
 		getcwd(cwd, sizeof(cwd));
 		print_cwd(cwd);
 		characters = getline(&buffer, &bufsize, stdin);
-		if (characters == -1)
+		if (characters == -1 || characters == EOF)
+			write(STDIN_FILENO, "\n", 2);
 			break;
 		if (buffer[characters - 1] == '\n')
 			buffer[characters - 1] = '\0';
@@ -34,10 +35,11 @@ int main(void)
 			command_token = strtok(NULL, " ");
 		}
 		command_array[i] = NULL;
+		count++;
 		if (special_chars(command_array[0], command_array[1], status) == 0)
 			continue;
 		child_pid = fork();
-		if (childcare(child_pid, exe_token, command_array) > 0)
+		if (childcare(child_pid, exe_token, command_array, count) > 0)
 			waitpid(child_pid, &status, WUNTRACED);
 	}
 	free(buffer);

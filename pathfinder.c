@@ -33,6 +33,7 @@ char *pathfinder(char *input)
 		if (access(concat_token, F_OK) == 0)
 			return (concat_token);
 	}
+	free(test_path);
 	free(concat_token);
 	return (input);
 }

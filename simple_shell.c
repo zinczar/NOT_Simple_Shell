@@ -26,11 +26,11 @@ int main(void)
 				write(STDOUT_FILENO, "\n", 2);
 			break;
 		}
-		if (_strcmp(buffer, "\n") == 0)
-			continue;
 		if (buffer[_strlen(buffer) - 1] == '\n')
 			buffer[_strlen(buffer) - 1] = '\0';
 		command_token = strtok(buffer, " ");
+		if (command_token == NULL)
+			continue;
 		i = 0;
 		while (command_token != NULL)
 		{

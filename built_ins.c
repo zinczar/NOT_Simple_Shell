@@ -25,9 +25,13 @@ char *_getenv(char *name)
  */
 int _printenv(void)
 {
-	size_t i = 0;
+	size_t i, j;
 
-	while (environ[i])
-		printf("%s\n", environ[i++]);
+	for (j = 0; environ[j]; j++)
+	{
+		for (i = 0; environ[j][i]; i++)
+			_putchar(environ[j][i]);
+		_putchar('\n');
+	}
 	return (0);
 }

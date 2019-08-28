@@ -29,21 +29,3 @@ int childcare(pid_t child_pid, char *exe_token, char **command_array)
 		return (child_pid);
 	return (0);
 }
-
-/**
- * error_print - compares two strings
- * @argv0: Command argument
- * @count: Shell iterations
- *
- * Return: Prints errors
- *
- */
-/*void error_print(void)
-{
-	write(STDERR_FILENO, "./hsh:", 21);
-	write(STDERR_FILENO, "1", 2);
-	write(STDERR_FILENO, ":", 2);
-	write(STDERR_FILENO, "GARBAGE", 8);
-	write(STDERR_FILENO, ": not found", 12);
-        write(STDERR_FILENO, "\n", 2);
-	}*/

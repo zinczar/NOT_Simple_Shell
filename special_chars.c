@@ -4,7 +4,6 @@
  * special_chars - entry point
  * @argv: The primary command
  * @argv1: Flag or path
- * @status: Exit status
  *
  * Return: 0 on success, -1 on failure
  */
